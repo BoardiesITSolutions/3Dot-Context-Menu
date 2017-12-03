@@ -1,0 +1,301 @@
+* {
+    z-index: 0;
+}
+
+input {
+    z-index: 0;
+}
+
+body
+{
+    padding-top: 10px;
+    z-index: 0;
+}
+
+.container
+{
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.header
+{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a30000+0,d50000+100 */
+    background: #a30000; /* Old browsers */
+    background: -moz-linear-gradient(top, #a30000 0%, #d50000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #a30000 0%,#d50000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #a30000 0%,#d50000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a30000', endColorstr='#d50000',GradientType=0 ); /* IE6-9 */
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+footer
+{
+    padding-top: 100px;
+}
+
+/*input[type=text],input[type=password], input[type=email], select, textarea, input[type=file]
+{
+    padding: 10px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 5px;
+    transition: border linear .2s,box-shadow linear .2s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    width: 60% !important;
+    margin-top: 10px;
+    display: inline-block !important;
+    margin-bottom: 10px;
+    outline: none;
+    font-family: arial;
+}
+
+input[type=file]
+{
+    border: none;
+    box-shadow: none;
+}
+
+input[type=text]:required:focus, input[type=password]:required:focus, input[type=email]:required:focus, textarea:required:focus
+{
+    box-shadow: 4px 4px 5px rgba(200, 0, 0, 0.40);
+    outline: none;
+}
+
+input[type=text]:valid:focus, input[type=password]:valid:focus, input[type=email]:valid:focus, textarea:valid:focus
+{
+    box-shadow: 4px 4px 5px rgba(27, 127, 18, 0.40);
+    outline: none;
+}
+
+input[type=submit]
+{
+    width: 120px;
+    padding: 10px;
+    color: white;
+    background: #3239ff;
+    background: -moz-linear-gradient(top, #3239ff 1%, #0d1cc1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#3239ff), color-stop(100%,#0d1cc1));
+    background: -webkit-linear-gradient(top, #3239ff 1%,#0d1cc1 100%);
+    background: -o-linear-gradient(top, #3239ff 1%,#0d1cc1 100%);
+    background: -ms-linear-gradient(top, #3239ff 1%,#0d1cc1 100%);
+    background: linear-gradient(to bottom, #3239ff 1%,#0d1cc1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3239ff', endColorstr='#0d1cc1',GradientType=0 );
+    border-radius: 5px;
+    border: black solid thin;
+    font-size: medium;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+    margin-left: 135px;
+}*/
+
+/*label
+{
+    width: 120px;
+    margin-right: 10px;
+    text-align: right;
+    display: inline-block;
+    vertical-align: central !important;
+}*/
+
+/*.form-group *
+{
+    vertical-align: middle !important;
+}
+
+#errorText
+{
+    font-weight: bold;
+    text-align: center;
+    color: #7F0000;
+}*/
+
+#errorToolbox
+{
+    position: absolute;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    display: none;
+    padding: 8px;
+    background-color: #403537;
+    z-index: 9999;
+    color: white;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.40);
+}
+
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navbar-wrapper
+{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+
+}
+
+.navbar-xs {
+    min-height:40px;
+    height: 40px;
+    z-index: 3000;
+}
+.navbar-xs .navbar-brand {
+    padding: 0px 12px;
+    font-size: 16px;
+    line-height: 40px;
+    z-index: 3000;
+}
+.navbar-xs .navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 37px;
+    z-index: 3000;
+}
+
+/*
+ * Override the bootstrap modal class z-index to ensure it is always above the nav
+ * usually only has a problem with the second nav (not the main website nav)
+ */
+.modal
+{
+    z-index: 5000 !important;
+}
+
+#topBar
+{
+    margin-top: 5px;
+    width: 850px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.linkButton
+{
+    width: auto;
+    float: left;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #E0DFE5;
+    margin-top: 0px;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.linkButton img
+{
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    vertical-align: central;
+}
+
+.commentContainer
+{
+    background-color: #E5E1E1;
+    padding: 8px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.rowItem
+{
+    border-bottom: solid thin #7E7C7F !important;
+    margin-bottom: 10px !important;
+}
+
+.bitsTag
+{
+    font-size: x-small;
+    font-weight: bold;
+    background-color: #A40000;
+    color: white;
+    border: solid thin black;
+    border-radius: 5px;
+    padding: 3px;
+    width: 115px;
+    text-align: center;
+    vertical-align: bottom;
+    bottom: 0;
+}
+
+.appContainer
+{
+    background-color: #f0f0f0;
+    width: 200px;
+    height: 120px;
+    border: solid thin #858585;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -ms-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;
+    cursor: hand;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+}
+
+.appContainer:hover
+{
+    background-color: #d7d7d7;
+}
+
+.appContainer .title
+{
+    font-weight: bold;
+    text-align: center;
+}
+
+.appContainer .appID
+{
+    text-align: center;
+}
+
+.appIDContainer
+{
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.data-container
+{
+    background-color: #323436;
+    padding: 10px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.data-container > p.title
+{
+    font-weight: bold;
+    text-align: center;
+}
+
+.data-container-table
+{
+    color: black !important;
+}
+
+.data-container-table > tbody > tr:nth-child(even)
+{
+    background-color: #c4c4c4;
+}
+
+.data-container-table > tbody > tr:not(:first-child):hover
+{
+    opacity: 1;
+    background-color: #e1e1e1;
+    transition: opacity .55s ease-in-out;
+    -moz-transition: opacity .55s ease-in-out;
+    -webkit-transition: opacity .55s ease-in-out;
+}
