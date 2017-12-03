@@ -5,7 +5,9 @@ development.
 
 The 3-dot context menu allows a simple and lightweight
 implementation for showing 3 vertical dots allowing the user
-to click and show a menu. 
+to click and show a menu. Below is a screenshot showing an example of what it looks like
+
+![3dot-context-menu example](https://boardiesitsolutions.com/images/3dot-context-menu.png)
 
 ## Requirements
 Jquery is required and most modern browsers should support
