@@ -68,18 +68,6 @@ before re-creating your view. If you don't do this, the click
 handler for the menu might not fire, it might fire multiple
 times depending on your browser.
 
-# Known Issues
-As far as we know there is only 1 known issue as mentioned
-above with the latest Firebox browser. 
-
-For some reason in the context-menu.js it fails stating that
-`this.contextMenu` is null. At the moment we've not found
-what is causing this specific issue as it works with other
-browsers but as soon as we find an answer we'll do an update. 
-
-Obviously though, if you know the issue, and fancy contributing
-to this project then please feel free to do a pull request. 
-
 # Contributing to the Project
 We'd love it if the  open source community would contribute
 to this project, fixing any issues, improving the code, adding
