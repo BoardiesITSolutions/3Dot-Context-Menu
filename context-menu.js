@@ -14,7 +14,6 @@ $(document).mouseup(function (e) {
 
 function ContextMenu(contextContainerID, menuItemClickCallback)
 {
-
     this.contextMenuContainer = $('.context-menu[data-container-id="'+contextContainerID+'"]');
 
     this.contextMenuContainer.click(function(e){
@@ -26,47 +25,43 @@ function ContextMenu(contextContainerID, menuItemClickCallback)
 
         //Show hide the context menu
         var contextMenuID = "#" + $(this).attr("data-container-id");
-        this.contextMenu = $(contextMenuID);
+        var contextMenu = $(contextMenuID);
 
 
         //Use e.clientX get the cursor position and subtract the context menu width so that it appears on the left of
         //the cursor, minus another 15 take the extra padding into account so the menu doesn't appear
         //directly under the cursor
-        var menuPos = {left: e.clientX - this.contextMenu.width() - 15, top: e.clientY};
+        var menuPos = {left: e.clientX - contextMenu.width() - 15, top: contextMenu.offset().top + e.clientY};
 
-        if (!isElementInViewport(this.contextMenu)) {
+        if (!isElementInViewport(contextMenu)) {
             alert("View not visible");
-            var rightEdgePos = this.contextMenu.width() + this.contextMenu.offset().left;
+            var rightEdgePos = contextMenu.width() + contextMenu.offset().left;
             var screenWidth = $(window).width();
 
 
             var leftShiftOver = menuPos.left - (screenWidth - rightEdgePos);
             var showPos = menuPos.left - leftShiftOver - 10; //Subtract an extra 10 so it has some margin space
 
-            alert("Right Edge Pos: " + rightEdgePos + "\n" + "Screen Width: " + screenWidth + "\nShow Pos: " + showPos);
-
-            this.contextMenu.css({top: menuPos.top, left: showPos, position: 'absolute'});
+            contextMenu.css({top: menuPos.top, left: showPos, position: 'absolute'});
         }
         else
         {
-            this.contextMenu.css({top: menuPos.top, left: menuPos.left, position: 'absolute'});
+            contextMenu.css({top: menuPos.top, left: menuPos.left, position: 'absolute'});
         }
 
-        this.contextMenu.find("ul > li").click(function(){
+        contextMenu.find("ul > li").click(function(){
             menuItemClickCallback($(this), parent);
-            self.contextMenu.hide();
+            contextMenu.hide();
 
             //Remove the click event otherwise a new one keep getting created, so an additional call event will be called
             //each time the menu opens and closes
-            self.contextMenu.find("ul > li").unbind("click");
+            contextMenu.find("ul > li").unbind("click");
         });
-        this.contextMenu.show();
+        contextMenu.show();
 
     });
 
     this.destroy = function() {
-        console.log("destroying context menu");
-        console.log(this.contextMenuContainer);
         this.contextMenuContainer.unbind("click");
     };
 }
