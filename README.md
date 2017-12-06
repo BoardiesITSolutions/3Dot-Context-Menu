@@ -12,9 +12,7 @@ to click and show a menu. Below is a screenshot showing an example of what it lo
 ## Requirements
 Jquery is required and most modern browsers should support
 the library. We've tested on the latest versions of Google
-Chrome, Internet Explorer, Microsoft Edge. The only browser
-that doesn't work is the latest Firefox Quantum (we'll get
-into that in a bit). 
+Chrome, Internet Explorer, Microsoft Edge and Firefox. 
 
 ## Implementing 3-dot Context Menu
 Implementing the 3-dot context menu is as straight forward
