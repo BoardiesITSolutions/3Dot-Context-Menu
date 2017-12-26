@@ -12,9 +12,7 @@ to click and show a menu. Below is a screenshot showing an example of what it lo
 ## Requirements
 Jquery is required and most modern browsers should support
 the library. We've tested on the latest versions of Google
-Chrome, Internet Explorer, Microsoft Edge. The only browser
-that doesn't work is the latest Firefox Quantum (we'll get
-into that in a bit). 
+Chrome, Internet Explorer, Microsoft Edge and Firefox. 
 
 ## Implementing 3-dot Context Menu
 Implementing the 3-dot context menu is as straight forward
@@ -70,6 +68,7 @@ options array. At the moment this options array only has one available
 option, but its done this way so its future proofed if there are new
 customisation options to be added in the future. 
 
+<<<<<<< HEAD
 The options array has one option which is to define an open call back,
 i.e. when the 3-dot menu is clicked, just before the context menu is
 opened, you'll receive a callback first to allow you to modify the menu
@@ -121,13 +120,6 @@ var options = {
         contextMenu.disableMenuItem(0); //Delete the first menu item
     }
 }
-```
-
-Below is how you would disable the menu item straight after initialising
-the context menu
-```
-var varContextMenu = ContextMenu("context-menu-items", click_callback);
-varContextMenu.disableMenuItem(0); //Delete the first first menu item
 ```
 
 There is also a function to re-enable the menu item which is 
