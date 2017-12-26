@@ -4,13 +4,19 @@
  * @copyright (c) Boardies IT Solutions - December 2017
  */
 
+.context-menu, td.context-menu, p.context-menu, h1.context-menu, h2.context-menu, h3.context-menu, h4.context-menu, h5.context-menu
+{
+    cursor: pointer;
+    pointer-events: none;
+
+}
 .context-menu:after
 {
     content: '\2807';
     font-size: 20px;
     cursor: pointer;
     cursor: hand;
-    pointer-events: all;
+    pointer-events: all ;
 }
 
 td.context-menu:after
@@ -59,7 +65,32 @@ h1.context-menu:after,h2.context-menu:after,h3.context-menu:after,h4.context-men
     border-radius: 5px;
 }
 
+.context-menu-container > ul > li.disabled
+{
+    color: #b7b7b7;
+}
+
+.context-menu-container > ul > li.disabled:hover
+{
+    background-color: white;
+}
+
 .context-menu-container > ul > li:hover
 {
     background-color: #c4c4c4;
+}
+
+.context-menu-container > ul > li.danger:hover
+{
+    background-color: #ff6959;
+}
+
+.context-menu-container > ul > li.warning:hover
+{
+    background-color: #fff27c;
+}
+
+.context-menu-container > ul > li.danger.disabled:hover, .context-menu-container > ul > li.warning.disabled:hover
+{
+    background-color: white;
 }

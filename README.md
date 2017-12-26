@@ -54,49 +54,113 @@ in your `data-container-id`) and the second parameter is your
 menu item click callback as follows:
 
 ```
+var varContextMenu = null;
 $(document).ready(function(){
-    var varContextMenu = new ContextMenu("context-menu-items", function (menu_item, parent)
+    varContextMenu = new ContextMenu("context-menu-items", function (menu_item, parent)
          {
              alert("Menu Item Clicked: " + menu_item.text() + "\nRecord ID: " + parent.attr("data-row-id"));
          });
 });
 ```
 
+## Customising 3-dot context menuu
+
+You can also add a 3rd parameter to the ContextMenu call which is an
+options array. At the moment this options array only has one available
+option, but its done this way so its future proofed if there are new
+customisation options to be added in the future. 
+
+The options array has one option which is to define an open call back,
+i.e. when the 3-dot menu is clicked, just before the context menu is
+opened, you'll receive a callback first to allow you to modify the menu
+such as disabling menu items (discussed later on). 
+
+You can create the context menu with the options array as follows:
+
+```
+var varContextMenu = null;
+$(document).ready(function(){
+    var options = {
+        openCallBack: function(contextMenu) {
+            console.log("Opening context menu call back called");
+        }
+    };
+    varContextMenu = new ContextMenu("context-menu-items", function (menu_item, parent)
+         {
+             alert("Menu Item Clicked: " + menu_item.text() + "\nRecord ID: " + parent.attr("data-row-id"));
+         }, options);
+});
+```
+
+In the `openCallback` function you'll get passed back to you a parameter.
+The parameter is the context menu object that is linked to the 3-dot 
+anchor point. Don't forget though, if multiple 3-dot menus are linked
+to the same `context-menu-container` and you manipulate the menu items
+in the callback, when opening the context menu from another 3-dot context
+menu, if its the same id, the same manipulated items will be shown, but
+can be amended again if required by using the `openCallback` function. 
+
+## Disabling menu items
+You can disable a menu item from being clickable dynamically. This 
+can be done in two ways. You can either disable a menu item from within
+the `openCallBack` method or by calling the disable method by 
+the contextMenu object, in the example above this would be `varContextMenu`. 
+
+The method for disabling a menu item is `disableMenuItem(param)`. The 
+parameter of this method is the menu item that should be disabled. This 
+can be a number (the position of the item within the menu (its 0 indexed)).
+The parameter can also be a string, the string being the text of the menu
+item. 
+
+Below is how you would disable the menu item from the `openCallBack` 
+method
+
+```
+var options = {
+    openCallBack: function(contextMenu) {
+        contextMenu.disableMenuItem(0); //Delete the first menu item
+    }
+}
+```
+
+Below is how you would disable the menu item straight after initialising
+the context menu
+```
+var varContextMenu = ContextMenu("context-menu-items", click_callback);
+varContextMenu.disableMenuItem(0); //Delete the first first menu item
+```
+
+There is also a function to re-enable the menu item which is 
+`enableMenuItem(param)`. This works in exactly the same way as the 
+disableMenuItem function, but this would likely only be used within
+the `openCallBack()` method. The paramater can be again a number to 
+indicate the menu item in what position to be re-enabled, or a string
+which is the text value of the menu item to re-enabled. 
+
+## CSS Classes available for menu items
+There are two CSS classes available that provide a different background
+colour to the menu item. The two classes available are warning and danger. 
+These could be used to provide a warning to the user that by that 
+clicking the menu item could have an undesired affect. For example, 
+say you have a menu item "Delete my Account" this item could have
+the class "danger" which would show a red background on hover. 
+
+The CSS is pretty straight forward for the menu so it should be
+fairly straight forward to modify or add new classes for your own needs. 
+
+##Reloading dynamic data where the context menu would be re-created
 If you dynamically load data, such as in our example a table
 make sure you call `destory()` on the contextMenuReturn object
 before re-creating your view. If you don't do this, the click
 handler for the menu might not fire, it might fire multiple
 times depending on your browser.
 
-# Known Issues
-As far as we know there is only 1 known issue as mentioned
-above with the latest Firebox browser. 
-
-For some reason in the context-menu.js it fails stating that
-`this.contextMenu` is null. At the moment we've not found
-what is causing this specific issue as it works with other
-browsers but as soon as we find an answer we'll do an update. 
-
-Obviously though, if you know the issue, and fancy contributing
-to this project then please feel free to do a pull request. 
-
-# Contributing to the Project
-We'd love it if the  open source community would contribute
-to this project, fixing any issues, improving the code, adding
-new features would all be very welcome. 
-
-My javascript knowledge is somewhat limited so I'm sure
-there could be improvements made in places which we would of 
-course welcome. 
-
-Please make sure that if you make any changes to the javascript
-or CSS that the minified versions are also updated. 
-
-The CSS can be minified by going to https://cssminifier.com/ 
-and the javascript can be minified by going to https://jscompress.com/. 
-
 # Reporting bugs/feature requests/getting help
 If you want to report an issue, have a feature request
 or just want to get some help, you can either use the issue
-tracker within GitHub or our support portal at https://support.boardiesitsolutions.com. 
+tracker within GitHub or our support portal at https://support.boardiesitsolutions.com.
+
+We would love for the open source community to contribute to this project
+and if you would like to, please check out our contributing guidelines
+[here](CONTRIBUTE.md).  
  

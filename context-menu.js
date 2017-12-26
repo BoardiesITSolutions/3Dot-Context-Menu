@@ -12,20 +12,22 @@ $(document).mouseup(function (e) {
     }
 });
 
-function ContextMenu(contextContainerID, menuItemClickCallback)
+function ContextMenu(contextContainerID, menuItemClickCallback, options)
 {
+    this.contextContainerID = contextContainerID;
     this.contextMenuContainer = $('.context-menu[data-container-id="'+contextContainerID+'"]');
-
+    var self = this;
+    var parent = $(this);
     this.contextMenuContainer.click(function(e){
 
-        var self = this;
-        var parent = $(this);
+
 
         //var menuPos = $(this).offset();
 
         //Show hide the context menu
         var contextMenuID = "#" + $(this).attr("data-container-id");
         var contextMenu = $(contextMenuID);
+        self.contextMenu = contextMenu;
 
 
         //Use e.clientX get the cursor position and subtract the context menu width so that it appears on the left of
@@ -49,20 +51,109 @@ function ContextMenu(contextContainerID, menuItemClickCallback)
             contextMenu.css({top: menuPos.top, left: menuPos.left, position: 'absolute'});
         }
 
-        contextMenu.find("ul > li").click(function(){
-            menuItemClickCallback($(this), parent);
-            contextMenu.hide();
+        if (options != null && typeof options !== "undefined" )
+        {
+            if (typeof options.openCallBack !== "undefined")
+            {
+                options.openCallBack(self);
+            }
+        }
 
-            //Remove the click event otherwise a new one keep getting created, so an additional call event will be called
-            //each time the menu opens and closes
-            contextMenu.find("ul > li").unbind("click");
+        contextMenu.find("ul > li").click(function(){
+            if (!$(this).hasClass("disabled")) {
+                menuItemClickCallback($(this), parent);
+                contextMenu.hide();
+
+                //Remove the click event otherwise a new one keep getting created, so an additional call event will be called
+                //each time the menu opens and closes
+                contextMenu.find("ul > li").unbind("click");
+            }
         });
+
+
+
         contextMenu.show();
 
     });
 
     this.destroy = function() {
         this.contextMenuContainer.unbind("click");
+    };
+
+    this.returnContextMenu = function(){
+        var contextMenu = null;
+        if (typeof self.contextMenu !== "undefined")
+        {
+            contextMenu = self.contextMenu;
+        }
+        else
+        {
+            var contextMenuContainer = $('.context-menu[data-container-id="'+this.contextContainerID+'"]');
+            var contextMenuID = "#" + contextMenuContainer.attr("data-container-id");
+            contextMenu = $(contextMenuID);
+        }
+
+        return contextMenu;
+    };
+
+    this.disableMenuItem = function(item){
+        var count = 0;
+
+        var contextMenu = this.returnContextMenu();
+
+
+        var itemCounter = contextMenu.find("ul > li").length;
+        contextMenu.find("ul > li").each(function(){
+            if (typeof item === "number")
+            {
+                if (item < 0 || item > itemCounter)
+                {
+                    throw "3Dot-ContextMenu: Item index is out of bounds";
+                }
+
+                if (count === item)
+                {
+                    $(this).addClass("disabled");
+                }
+            }
+            else if (typeof item === "string")
+            {
+                if ($(this).text() === item)
+                {
+                    $(this).addClass("disabled");
+                }
+            }
+            count++;
+        });
+    };
+
+    this.enableMenuItem = function(item){
+        var count = 0;
+        var contextMenu = this.returnContextMenu();
+        var itemCount = contextMenu.find("ul > li").length;
+
+        contextMenu.find("ul > li").each(function(){
+            if (typeof item === "number")
+            {
+                if (item < 0 || item > itemCount)
+                {
+                    throw "3Dot-ContextMenu: Item index is out of bounds";
+                }
+
+                if (count === item)
+                {
+                    $(this).removeClass("disabled");
+                }
+            }
+            else if (typeof item === "string")
+            {
+                if ($(this).text() === item)
+                {
+                    $(this).removeClass("disabled");
+                }
+            }
+            count++;
+        });
     };
 }
 

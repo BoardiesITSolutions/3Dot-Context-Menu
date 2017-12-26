@@ -13,13 +13,30 @@
         <link href="includes/context-menu.css" rel="stylesheet">
         <title>3-Dot Context Menu - Boardies IT Solutions</title>
         <script>
+            var tableContextMenu = null;
+
             $(document).ready(function(){
-                var tableContextMenu = new ContextMenu("context-menu-items", menuItemClickListener);
+                var options = {
+                    openCallBack: function(contextMenu) {
+                        contextMenu.disableMenuItem("Warning Item");
+                    }
+                };
+                tableContextMenu = new ContextMenu("context-menu-items", menuItemClickListener);
+                tableContextMenu.disableMenuItem(1);
             });
 
             function menuItemClickListener(menu_item, parent)
             {
-                alert("Menu Item Clicked: " + menu_item.text() + "\nRecord ID: " + parent.attr("data-row-id"));
+                if (menu_item.text() === "Re-enable item 2")
+                {
+                    tableContextMenu.enableMenuItem("Item 2");
+                    //As we can't enable item 2 again, then why not disable the menu item to re-enable
+                    tableContextMenu.disableMenuItem(3);
+                }
+                else
+                {
+                    alert("Menu Item Clicked: " + menu_item.text() + "\nRecord ID: " + parent.attr("data-row-id"));
+                }
             }
         </script>
     </head>
@@ -30,6 +47,9 @@
                 <li>Item 1</li>
                 <li>Item 2</li>
                 <li>Item 3</li>
+                <li>Re-enable item 2</li>
+                <li class="warning">Warning Item</li>
+                <li class="danger">Risky Item</li>
             </ul>
         </div>
 
