@@ -17,9 +17,9 @@ function ContextMenu(contextContainerID, menuItemClickCallback, options)
     this.contextContainerID = contextContainerID;
     this.contextMenuContainer = $('.context-menu[data-container-id="'+contextContainerID+'"]');
     var self = this;
-    var parent = $(this);
-    this.contextMenuContainer.click(function(e){
 
+    this.contextMenuContainer.click(function(e){
+        var parent = $(this);
 
 
         //var menuPos = $(this).offset();
