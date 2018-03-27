@@ -129,6 +129,25 @@ the `openCallBack()` method. The paramater can be again a number to
 indicate the menu item in what position to be re-enabled, or a string
 which is the text value of the menu item to re-enabled. 
 
+```
+var options = {
+    openCallBack: function(contextMenu) {
+        contextMenu.hideMenuItem(0); //Delete the first menu item
+    }
+}
+```
+
+There is also a function to reshow the menu item which is `showMenuItem(param)`. This works in exactly the same way as the hideMenuItem function, but this would likely only be used witin the `openCallBak()` method. The parameter can again be a number to indicate the menu item in what position to be re-shown, or a string which is the text value of the menu item to be reshown. 
+
+## Hide Menu Items
+You can hide a menu item from being shown dynamically. This can be done in two ways. You can either a disable a menu item from within the `openCallBack` method, or by calling the hideMenuItem method by the contextMenu object, in the example above this would be `varContextMenu`. 
+
+The method for hiding a menu item is `hideMenuItem(param)`. The parameter of this method is the menu item that should be disabled. This can be a number (the position of the item within the menu (its 0 indexed)). The parameter can also be a s tring, t he string being the text oof the menu item. 
+
+Below is how you would hide the menu item from the open `openCallBack` method. 
+
+
+
 ## CSS Classes available for menu items
 There are two CSS classes available that provide a different background
 colour to the menu item. The two classes available are warning and danger. 
