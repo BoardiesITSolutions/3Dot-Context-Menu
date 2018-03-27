@@ -20,7 +20,7 @@ function ContextMenu(contextContainerID, menuItemClickCallback, options)
     var parent = $(this);
     this.contextMenuContainer.click(function(e){
 
-
+        var parent = $(this);
 
         //var menuPos = $(this).offset();
 
