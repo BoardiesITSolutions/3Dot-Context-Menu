@@ -17,9 +17,9 @@ function ContextMenu(contextContainerID, menuItemClickCallback, options)
     this.contextContainerID = contextContainerID;
     this.contextMenuContainer = $('.context-menu[data-container-id="'+contextContainerID+'"]');
     var self = this;
-
+    var parent = $(this);
     this.contextMenuContainer.click(function(e){
-        var parent = $(this);
+
 
 
         //var menuPos = $(this).offset();
@@ -155,6 +155,63 @@ function ContextMenu(contextContainerID, menuItemClickCallback, options)
             count++;
         });
     };
+
+    this.hideMenuItem = function(item){
+        var count = 0;
+
+        var contextMenu = this.returnContextMenu();
+
+        var itemCounter = contextMenu.find("ul > li").length;
+        contextMenu.find("ul > li").each(function(){
+            if (typeof item === "number")
+            {
+                if (item < 0 || item > itemCounter)
+                {
+                    throw "3Dot-ContextMenu: Item index out of bounds";
+                }
+                if (count === item)
+                {
+                    $(this).hide();
+                }
+            }
+            else if (typeof item === "string")
+            {
+                if ($(this).text() === item)
+                {
+                    $(this).hide();
+                }
+            }
+            count++;
+        });
+    };
+
+    this.showMenuItem = function(item) {
+        var count = 0;
+
+        var contextMenu = this.returnContextMenu();
+
+        var itemCounter = contextMenu.find("ul > li").length;
+        contextMenu.find("ul > li").each(function(){
+            if (typeof item === "number")
+            {
+                if (item < 0 | item > itemCounter)
+                {
+                    throw "3Dot-ContextMenu: Item index out of bounds";
+                }
+                if (count === item)
+                {
+                    $(this).show();
+                }
+            }
+            else if (typeof item === "string")
+            {
+                if ($(this).text() === item)
+                {
+                    $(this).show();
+                }
+            }
+        });
+    }
 }
 
 function isElementInViewport (el) {
