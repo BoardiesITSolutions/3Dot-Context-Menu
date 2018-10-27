@@ -73,7 +73,7 @@ function ContextMenu(contextContainerID, menuItemClickCallback, options)
 
 
         contextMenu.show();
-
+        return false;
     });
 
     this.destroy = function() {
