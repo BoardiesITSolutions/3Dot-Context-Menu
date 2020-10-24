@@ -55,7 +55,7 @@ function ContextMenu(contextContainerID, menuItemClickCallback, options)
         {
             if (typeof options.openCallBack !== "undefined")
             {
-                options.openCallBack(self);
+                options.openCallBack(self, parent);
             }
         }
 
