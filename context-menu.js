@@ -59,14 +59,13 @@ function ContextMenu(contextContainerID, menuItemClickCallback, options)
             }
         }
 
+        //Remove the click event otherwise a new one keep getting created, so an additional call event will be called
+        //each time the menu opens and closes
+        contextMenu.find("ul > li").unbind("click");
         contextMenu.find("ul > li").click(function(){
             if (!$(this).hasClass("disabled")) {
                 menuItemClickCallback($(this), parent);
                 contextMenu.hide();
-
-                //Remove the click event otherwise a new one keep getting created, so an additional call event will be called
-                //each time the menu opens and closes
-                contextMenu.find("ul > li").unbind("click");
             }
         });
 
